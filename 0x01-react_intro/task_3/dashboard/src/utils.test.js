@@ -1,16 +1,23 @@
-import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
+import { getFooterCopy, getFullYear, getLatestNotification } from "./utils";
+// import {
+//   getFooterCopy,
+//   getFullYear,
+//   getLatestNotification,
+// } from "@jest/globals";
 
-test('returns current year', () => {
-	expect(getFullYear()).toBe(2022);
-});
+describe("Utility functions", () => {
+  test('getFullYear returns current year', () => {
+    const currentYear = new Date().getFullYear();
+    expect(getFullYear()).toBe(currentYear);
+  });
 
-test('correct footer copy', () => {
-	expect(getFooterCopy(true)).toBe('Holberton School');
-	expect(getFooterCopy(false)).toBe('Holberton School main dashboard');
-});
+  test('getFooterCopy returns correct string', () => {
+    expect(getFooterCopy(false)).toBe("Holberton School main dashboard");
+    expect(getFooterCopy(true)).toBe('Holberton School');
+  });
 
-test('returns right notification', () => {
-	expect(getLatestNotification()).toBe(
-		'<strong>Urgent requirement</strong> - complete by EOD'
-	);
+  test('getLatestNotification returns correct string', () => {
+    const expectedString = '<strong>Urgent requirement</strong> - complete by EOD';
+    expect(getLatestNotification()).toBe(expectedString);
+  });
 });
